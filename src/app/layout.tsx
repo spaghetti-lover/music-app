@@ -3,9 +3,7 @@ import { Quicksand } from "next/font/google";
 import "./globals.css";
 import Sider from "./components/sider/Sider";
 import Search from "./components/search/Search";
-import { ImPrevious2 } from "react-icons/im";
-import { ImNext2 } from "react-icons/im";
-import { FaPlay } from "react-icons/fa";
+import Play from "./components/play/Play";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -51,20 +49,8 @@ export default function RootLayout({
               </p>
             </div>
           </div>
-          <div className="flex-1 flex items-center flex-col mx-[67px]">
-            <div className="mt-[22px] flex items-center mb-[11px]">
-              <ImPrevious2 className="text-[16px]" />
-              <button className="mx-[42px] rounded-full inline-flex justify-center items-center text-white w-[34px] h-[34px] text-[15px] border border-white hover:bg-primary hover:border-primary">
-                <FaPlay />
-              </button>
-              <button className="text-[16px]">
-                <ImNext2 />
-              </button>
-            </div>
-            <input type="range" className="w-full"></input>
-          </div>
-          <div>Loa</div>
         </div>
+        <Play />
       </body>
     </html>
   );
