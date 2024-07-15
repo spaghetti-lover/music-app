@@ -1,4 +1,4 @@
-import { Card } from "@/app/interfaces/Card";
+import { Card } from "@/app/interfaces/card/Card";
 import { CardShow } from "../card/CardShow";
 
 export const Section2 = () => {
@@ -7,7 +7,7 @@ export const Section2 = () => {
       title: "Nhac Tre",
       sub_title: "Top 100 Nhạc Trẻ hay nhất hiện nay",
       image: "/images/nhactre.png",
-      link: "/",
+      link: "/categories",
     },
     {
       title: "Pop Âu Mỹ",

@@ -3,5 +3,5 @@ export interface Card {
   title: string;
   sub_title: string;
   image: string;
-  link: Url;
+  link?: Url;
 }

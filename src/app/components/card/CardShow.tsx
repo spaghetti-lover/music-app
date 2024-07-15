@@ -1,4 +1,4 @@
-import { Card } from "@/app/interfaces/Card";
+import { Card } from "@/app/interfaces/card/Card";
 import Link from "next/link";
 
 export const CardShow = ({ data }: { data: Card[] }) => {

@@ -1,4 +1,4 @@
-import { Card } from "@/app/interfaces/Card";
+import { Card } from "@/app/interfaces/card/Card";
 import { CardShow } from "../card/CardShow";
 
 export const Section3 = () => {
