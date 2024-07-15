@@ -4,10 +4,10 @@ import Link from "next/link";
 export const CardShow = ({ data }: { data: Card[] }) => {
   return (
     <>
-      <ul className="flex">
+      <ul className="flex  grid grid-cols-5">
         {data.map((item, index) => (
           <Link href={item.link}>
-            <li key={index} className="mr-[20px]">
+            <li key={index} className="mr-[20px] mb-[30px]">
               <div className="">
                 <img src={item.image} alt="" />
               </div>

@@ -1,4 +1,4 @@
-export const SongDetail = () => {
+export const Login = () => {
   return (
     <>
       <div></div>
