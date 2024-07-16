@@ -1,7 +1,9 @@
+import { Login } from "@/app/components/login/Login";
+
 export default function LoginPage() {
   return (
     <>
-      <div>Đăng nhập</div>
+      <Login />
     </>
   );
 }

@@ -1,7 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaHeart, FaPlay } from "react-icons/fa";
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
 export const Section1 = () => {
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAxk7oeJYSW0uhDN54h3oIpO3wSP0mVNq0",
+    authDomain: "music-app-bd36f.firebaseapp.com",
+    databaseURL: "https://music-app-bd36f-default-rtdb.firebaseio.com",
+    projectId: "music-app-bd36f",
+    storageBucket: "music-app-bd36f.appspot.com",
+    messagingSenderId: "700335002914",
+    appId: "1:700335002914:web:d9e43f80323e69218ec17b",
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
   interface MenuMusic {
     title: string;
     views: number;
