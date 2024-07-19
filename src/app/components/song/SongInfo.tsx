@@ -20,7 +20,7 @@ export const SongInfo = ({ song }: { song: ISongList }) => {
         </div>
         <div className="text-[14px]">{song.singer}</div>
         <div className="flex items-center">
-          <div className="text-[14px] mr-[18px]">{song.duration}</div>
+          <div className="text-[14px] mr-[18px]">{song.listen}</div>
           <div className="text-[20px]">
             <FaHeart />
           </div>

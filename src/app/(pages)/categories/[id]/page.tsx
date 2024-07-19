@@ -74,7 +74,7 @@ Dạy nhau tốt hơn xong dành lại cho người sau…`;
     <>
       <CardInfo
         title="Nhạc Trẻ"
-        sub_title="Hồ Quang Hiếu, Huỳnh Văn"
+        description="Hồ Quang Hiếu, Huỳnh Văn"
         image="/images/hoquanghieu.png"
       />
       <SongLyric lyrics={lyrics} />

@@ -1,7 +1,7 @@
 import { Card } from "@/app/interfaces/card/Card";
 
 export const CardInfo = (props: Card) => {
-  const { title, sub_title, image } = props;
+  const { title, description, image } = props;
   return (
     <>
       <div className="flex items-center">
@@ -13,7 +13,7 @@ export const CardInfo = (props: Card) => {
         </div>
         <div className="flex-1">
           <h2 className="text-primary font-bold text-[35px]">{title}</h2>
-          <p className="text-[14px] text-[#EFEEE0]">{sub_title}</p>
+          <p className="text-[14px] text-[#EFEEE0]">{description}</p>
         </div>
       </div>
     </>

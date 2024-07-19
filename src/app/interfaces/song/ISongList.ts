@@ -1,7 +1,8 @@
 export interface ISongList {
+  songId: any;
   title: string;
   singer: string;
-  duration: string;
+  listen: string;
   image: string;
   link: string;
 }
