@@ -1,29 +1,26 @@
 "use client";
 import { SongList } from "@/app/components/song/SongList";
 import { getSongList } from "@/app/helpers/getSong";
+import { ISongList } from "@/app/interfaces/song/ISongList";
 import { useEffect, useState } from "react";
 
-// Define the props type for better type checking
 interface Section1Props {
   id: string;
 }
 
 export const Section1: React.FC<Section1Props> = ({ id }) => {
-  let [songLists, setSongLists] = useState<any[]>([]);
+  const [songLists, setSongLists] = useState<ISongList[]>([]);
   useEffect(() => {
     const fetchApi = async () => {
-      const data: any[] = await getSongList();
-      const new_data: any[] = data.filter((item: any) =>
-        item.singerId.includes(id)
-      );
+      const new_list = await getSongList();
+      const new_data = new_list.filter((item) => item.categoryId == id);
       setSongLists(new_data);
     };
     fetchApi();
-  }, []);
-
+  }, [id]);
   return (
     <>
-      <SongList title={"Danh sách bài hát"} songs={songLists} />
+      <SongList title={"Bài hát cùng danh mục"} songs={songLists} />
     </>
   );
 };

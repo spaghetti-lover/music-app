@@ -20,12 +20,23 @@ export const getSongList = async () => {
 
         data.push({
           id: key,
-          link: `/songs/${key}`,
+          link: `/song/${key}`,
           ...temp_data,
         });
       });
       resolve(data);
     });
+  });
+  return result;
+};
+
+export const getSongDetail = async (id: string) => {
+  const songRef = ref(db, `songs/${id}`);
+  const result = await new Promise((resolve) => {
+    const temp = onValue(songRef, (snapshot) => {
+      resolve(snapshot.val());
+    });
+    return temp;
   });
   return result;
 };

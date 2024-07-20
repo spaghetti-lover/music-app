@@ -14,7 +14,7 @@ export const SongInfo = ({ song }: { song: ISongList }) => {
               className="w-full h-full truncate object-cover"
             />
           </div>
-          <Link href={``} className="font-bold text-[14px]">
+          <Link href={song.link} className="font-bold text-[14px]">
             {song.title}
           </Link>
         </div>
