@@ -1,49 +1,27 @@
+"use client";
 import Image from "next/image";
-import Link from "next/link";
 import { FaHeart, FaPlay } from "react-icons/fa";
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+import { getSongList } from "@/app/helpers/getSong";
+import { useEffect, useState } from "react";
+import { ButtonPlay } from "../button/ButtonPlay";
+import { ISongList } from "@/app/interfaces/song/ISongList";
 export const Section1 = () => {
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyAxk7oeJYSW0uhDN54h3oIpO3wSP0mVNq0",
-    authDomain: "music-app-bd36f.firebaseapp.com",
-    databaseURL: "https://music-app-bd36f-default-rtdb.firebaseio.com",
-    projectId: "music-app-bd36f",
-    storageBucket: "music-app-bd36f.appspot.com",
-    messagingSenderId: "700335002914",
-    appId: "1:700335002914:web:d9e43f80323e69218ec17b",
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  interface MenuMusic {
-    title: string;
-    views: number;
-    singer: string;
-    image: string;
-  }
-
-  const MenuMusic: MenuMusic[] = [
-    {
-      title: "Cô Phòng",
-      singer: "Hồ Quang Hiếu, Huỳnh Văn",
-      views: 24500,
-      image: "/images/hoquanghieu.png",
-    },
-    {
-      title: "Hoa Nở Bên Đường",
-      singer: "Quang Đăng Trần, ACV",
-      views: 20500,
-      image: "/images/HoaNoBenDuong.png",
-    },
-    {
-      title: "Hứa Đợi Nhưng Chẳng Tới",
-      singer: "Lâm Tuấn, Vương Thiên Tuấn",
-      views: 18200,
-      image: "/images/HuaDoiNhungChangToi.png",
-    },
-  ];
+  // interface MenuMusic {
+  //   key: string;
+  //   id: string;
+  //   title: string;
+  //   singer: string;
+  //   listen: number;
+  //   image: string;
+  // }
+  let [MenuMusic, setMenuMusic] = useState<ISongList[]>([]);
+  useEffect(() => {
+    const fetchApi = async () => {
+      const data = await getSongList(3);
+      setMenuMusic(data);
+    };
+    fetchApi();
+  }, []);
 
   return (
     <div className="flex">
@@ -76,28 +54,25 @@ export const Section1 = () => {
               >
                 <div className="flex w-full items-center justify-between">
                   <div className="flex items-center">
-                    <div className="mx-[10px]">
-                      <Image
+                    <div className="mx-[10px] w-[76px] aspect-square truncate">
+                      <img
                         src={item.image}
                         alt={item.title}
-                        width={76}
-                        height={76}
+                        className="w-full h-full object-cover"
                       />
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <h4 className="text-[16px] font-semibold">
                         {item.title}
                       </h4>
                       <p className="text-[12px] text-[#909090]">
                         {item.singer}
                       </p>
-                      <p className="text-[12px]">{item.views} lượt nghe</p>
+                      <p className="text-[12px]">{item.listen} lượt nghe</p>
                     </div>
                   </div>
                   <div className="flex items-center">
-                    <button className="mx-[10px] rounded-full inline-flex justify-center items-center text-white w-[34px] h-[34px] text-[15px] border border-white hover:bg-primary hover:border-primary">
-                      <FaPlay />
-                    </button>
+                    <ButtonPlay song={item} />
                     <button className="mx-[10px] rounded-full inline-flex justify-center items-center text-white w-[34px] h-[34px] text-[15px] border border-white hover:bg-primary hover:border-primary">
                       <FaHeart />
                     </button>

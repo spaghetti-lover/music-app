@@ -9,7 +9,7 @@ import {
 } from "firebase/database";
 import { db } from "../firebaseConfig";
 
-export const getSongList = async () => {
+export const getSongList = async (max?: number) => {
   const songRef = ref(db, "songs");
   const result: any[] = await new Promise((resolve) => {
     let data: any[] = [];
@@ -24,6 +24,9 @@ export const getSongList = async () => {
           ...temp_data,
         });
       });
+      if (max) {
+        data = data.slice(0, max);
+      }
       resolve(data);
     });
   });

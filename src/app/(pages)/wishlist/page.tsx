@@ -1,51 +1,18 @@
+"use client";
 import { SongList } from "@/app/components/song/SongList";
+import { getSongList } from "@/app/helpers/getSong";
 import { ISongList } from "@/app/interfaces/song/ISongList";
+import { useEffect, useState } from "react";
 
 export default function WishlistPage() {
-  const songLists: ISongList[] = [
-    {
-      title: "Cô Phòng",
-      singer: "Sơn Tùng M-TP",
-      duration: "4:32",
-      image: "/images/noinaycoanh.png",
-      link: "/",
-    },
-    {
-      title: "Cô Phòng",
-      singer: "Sơn Tùng M-TP",
-      duration: "4:32",
-      image: "/images/noinaycoanh.png",
-      link: "/",
-    },
-    {
-      title: "Cô Phòng",
-      singer: "Sơn Tùng M-TP",
-      duration: "4:32",
-      image: "/images/noinaycoanh.png",
-      link: "/",
-    },
-    {
-      title: "Cô Phòng",
-      singer: "Sơn Tùng M-TP",
-      duration: "4:32",
-      image: "/images/noinaycoanh.png",
-      link: "/",
-    },
-    {
-      title: "Cô Phòng",
-      singer: "Sơn Tùng M-TP",
-      duration: "4:32",
-      image: "/images/noinaycoanh.png",
-      link: "/",
-    },
-    {
-      title: "Cô Phòng",
-      singer: "Sơn Tùng M-TP",
-      duration: "4:32",
-      image: "/images/noinaycoanh.png",
-      link: "/",
-    },
-  ];
+  let [songLists, setSongLists] = useState<ISongList[]>([]);
+  useEffect(() => {
+    const fetchApi = async () => {
+      const data = await getSongList(10);
+      setSongLists(data);
+    };
+    fetchApi();
+  }, []);
   return (
     <>
       <SongList title={"Bài hát yêu thích"} songs={songLists} />

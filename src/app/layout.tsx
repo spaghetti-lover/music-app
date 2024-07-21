@@ -34,7 +34,7 @@ export default function RootLayout({
             </div>
           </div>
         </div>
-        <div className="flex justify-between z-[999] bottom-0 w-full fixed bg-[#212121] py-[20px] px-[103px]">
+        {/* <div className="flex justify-between z-[999] bottom-0 w-full fixed bg-[#212121] py-[20px] px-[103px]">
           <div className="flex items-center">
             <img
               className="mr-[13px]"
@@ -49,7 +49,7 @@ export default function RootLayout({
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
         <Play />
       </body>
     </html>

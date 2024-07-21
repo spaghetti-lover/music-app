@@ -15,7 +15,7 @@ const Search = () => {
     }
   };
   return (
-    <div className="mt-[20px] mb-[30px] bg-[#212121] rounded-[50px] py-[15px]">
+    <div className="w-full mt-[20px] mb-[30px] bg-[#212121] rounded-[50px] py-[15px]">
       <form onSubmit={searchSubmit} className="relative">
         <FaMagnifyingGlass className="absolute ml-[20px] text-white top-[50%] left-[20px] transform translate-y-[-50%] text-[22px]" />
         <input
