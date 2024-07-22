@@ -5,6 +5,7 @@ import { getSongList } from "@/app/helpers/getSong";
 import { useEffect, useState } from "react";
 import { ButtonPlay } from "../button/ButtonPlay";
 import { ISongList } from "@/app/interfaces/song/ISongList";
+import { getSingerList } from "@/app/helpers/getSinger";
 export const Section1 = () => {
   // interface MenuMusic {
   //   key: string;
@@ -22,6 +23,15 @@ export const Section1 = () => {
     };
     fetchApi();
   }, []);
+
+  let [singerList, setSingerList] = useState<any>([]);
+  useEffect(() => {
+    const fetchApi = async () => {
+      const list = await getSingerList();
+      setSingerList(list);
+    };
+    fetchApi();
+  });
 
   return (
     <div className="flex">
@@ -49,10 +59,11 @@ export const Section1 = () => {
           <ul>
             {MenuMusic.map((item, index) => (
               <li
-                key={index}
-                className="flex items-center justify-between py-[20px] border-b border-[#333]"
+                key={item.id}
+                song-id={item.id}
+                className="inner-song-item flex items-center justify-between py-[20px] border-b border-[#333]"
               >
-                <div className="flex w-full items-center justify-between">
+                <div className=" flex w-full items-center justify-between">
                   <div className="flex items-center">
                     <div className="mx-[10px] w-[76px] aspect-square truncate">
                       <img
@@ -66,13 +77,21 @@ export const Section1 = () => {
                         {item.title}
                       </h4>
                       <p className="text-[12px] text-[#909090]">
-                        {item.singer}
+                        {singerList
+                          .filter((song: any) =>
+                            item.singerId.includes(song.id)
+                          )
+                          .map((item: any) => item.title)
+                          .join(", ")}
                       </p>
                       <p className="text-[12px]">{item.listen} lượt nghe</p>
                     </div>
                   </div>
                   <div className="flex items-center">
-                    <ButtonPlay song={item} />
+                    <ButtonPlay
+                      className="mx-[10px] rounded-full inline-flex justify-center items-center text-white w-[34px] h-[34px] text-[15px] border border-white hover:bg-primary hover:border-primary"
+                      song={item}
+                    />
                     <button className="mx-[10px] rounded-full inline-flex justify-center items-center text-white w-[34px] h-[34px] text-[15px] border border-white hover:bg-primary hover:border-primary">
                       <FaHeart />
                     </button>

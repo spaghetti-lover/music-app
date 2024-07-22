@@ -1,12 +1,26 @@
+"use client";
 import Link from "next/link";
-import { FaPlay, FaHeart } from "react-icons/fa6";
+import { FaHeart } from "react-icons/fa6";
 import { ISongList } from "@/app/interfaces/song/ISongList";
+import { ButtonPlay } from "../button/ButtonPlay";
+import { getSingerList } from "@/app/helpers/getSinger";
+import { useEffect, useState } from "react";
 export const SongInfo = ({ song }: { song: ISongList }) => {
+  let [singerList, setSingerList] = useState<any>([]);
+  useEffect(() => {
+    const fetchApi = async () => {
+      const list = await getSingerList();
+      setSingerList(list);
+    };
+
+    fetchApi();
+  });
+
   return (
     <>
-      <div className="flex items-center justify-between bg-[#212121] rounded-[15px] mb-[10px] py-[10px] px-[18px]">
+      <div className="flex items-center justify-between bg-[#212121] rounded-[15px] mb-[10px] py-[10px] px-[18px] ">
         <div className="flex items-center">
-          <FaPlay />
+          <ButtonPlay className="" song={song} />
           <div className="w-[42px] h-[42px] mx-[12px]">
             <img
               src={song.image}
@@ -18,7 +32,12 @@ export const SongInfo = ({ song }: { song: ISongList }) => {
             {song.title}
           </Link>
         </div>
-        <div className="text-[14px]">{song.singer}</div>
+        <div className="text-[14px]">
+          {singerList
+            .filter((item: any) => song.singerId.includes(item.id))
+            .map((item: any) => item.title)
+            .join(", ")}
+        </div>
         <div className="flex items-center">
           <div className="text-[14px] mr-[18px]">{song.listen}</div>
           <div className="text-[20px]">

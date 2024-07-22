@@ -2,11 +2,11 @@ import { onValue, ref } from "firebase/database";
 import { db } from "../firebaseConfig";
 import { Card } from "../interfaces/card/Card";
 
-export const getCategoryList = async () => {
+export const getCategoryList = async (max?: number) => {
   const categoryList = ref(db, "categories");
 
   const result = await new Promise<Card[]>((resolve) => {
-    const list: any[] = [];
+    let list: any[] = [];
     onValue(categoryList, (snapshot) => {
       snapshot.forEach((childSnapshot) => {
         const key = childSnapshot.key;
@@ -18,6 +18,9 @@ export const getCategoryList = async () => {
           ...temp_data,
         });
       });
+      if (max) {
+        list = list.splice(0, max);
+      }
       resolve(list);
     });
   });

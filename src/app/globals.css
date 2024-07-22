@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Cho các trình duyệt dựa trên WebKit (bao gồm Chrome, Safari) */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Ẩn default appearance */
+  width: 10px; /* Chiều rộng của thumb */
+  height: 10px; /* Chiều cao của thumb */
+  border-radius: 50%; /* Bo tròn thumb */
+  background-color: #00adef; /* Màu nền của thumb */
+  cursor: pointer; /* Con trỏ khi hover */
+  border: 2px solid #00adef; /* Viền cho thumb */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Đổ bóng */
+}
+
+/* Cho Firefox */
+input[type="range"]::-moz-range-thumb {
+  width: 10px; /* Chiều rộng của thumb */
+  height: 10px; /* Chiều cao của thumb */
+  border-radius: 50%; /* Bo tròn thumb */
+  background-color: #00adef; /* Màu nền của thumb */
+  cursor: pointer; /* Con trỏ khi hover */
+  border: 2px solid #00adef; /* Viền cho thumb */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Đổ bóng */
+}

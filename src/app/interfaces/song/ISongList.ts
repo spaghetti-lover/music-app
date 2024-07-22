@@ -6,5 +6,5 @@ export interface ISongList {
   listen: number;
   image: string;
   audio?: string;
-  link?: string;
+  link?: any;
 }

@@ -1,38 +1,13 @@
 import { Card } from "@/app/interfaces/card/Card";
 import { CardShow } from "../card/CardShow";
+import { getCategoryList } from "@/app/helpers/getCategories";
 
-export const Section2 = () => {
-  const SongType: Card[] = [
-    {
-      title: "Nhac Tre",
-      description: "Top 100 Nhạc Trẻ hay nhất hiện nay",
-      image: "/images/nhactre.png",
-    },
-    {
-      title: "Pop Âu Mỹ",
-      description: "Top 100 Pop Âu Mỹ hay nhất hiện nay",
-      image: "/images/popaumy.png",
-    },
-    {
-      title: "Nhạc EDM",
-      description: "Top 100 Nhạc Electronic/Dance Âu Mỹ",
-      image: "/images/nhacedm.png",
-    },
-    {
-      title: "Nhạc Trữ Tình",
-      description: "Top 100 Nhạc Trữ Tình hay nhất hiện nay",
-      image: "/images/trutinh.png",
-    },
-    {
-      title: "Nhạc Hàn Quốc",
-      description: "Top 100 Nhạc Hàn Quốc hay nhất hiện nay",
-      image: "/images/hanquoc.png",
-    },
-  ];
+export const Section2 = async () => {
+  const categoryList: Card[] = await getCategoryList(5);
   return (
     <>
       <div className="my-[30px]">
-        <CardShow title="Danh mục nổi bật" data={SongType} />
+        <CardShow title="Danh mục nổi bật" data={categoryList} />
       </div>
     </>
   );
