@@ -1,7 +1,7 @@
 import { onValue, ref } from "firebase/database";
 import { db } from "../firebaseConfig";
 
-export const getSingerList = async () => {
+export const getSingerList = async (max?: number) => {
   const singerRef = ref(db, "singers");
   const result: any[] = await new Promise((resolve, reject) => {
     let dataList: any[] = [];
@@ -17,6 +17,7 @@ export const getSingerList = async () => {
             ...childData,
           });
         });
+        dataList = dataList.slice(0, max);
         resolve(dataList);
       },
       (error) => {
