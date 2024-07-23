@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { ButtonPlay } from "../button/ButtonPlay";
 import { ISongList } from "@/app/interfaces/song/ISongList";
 import { getSingerList } from "@/app/helpers/getSinger";
+import { ButtonHeart } from "../button/ButtonHeart";
 export const Section1 = () => {
   // interface MenuMusic {
   //   key: string;
@@ -31,7 +32,7 @@ export const Section1 = () => {
       setSingerList(list);
     };
     fetchApi();
-  });
+  }, []);
 
   return (
     <div className="flex">
@@ -92,9 +93,10 @@ export const Section1 = () => {
                       className="mx-[10px] rounded-full inline-flex justify-center items-center text-white w-[34px] h-[34px] text-[15px] border border-white hover:bg-primary hover:border-primary"
                       song={item}
                     />
-                    <button className="mx-[10px] rounded-full inline-flex justify-center items-center text-white w-[34px] h-[34px] text-[15px] border border-white hover:bg-primary hover:border-primary">
-                      <FaHeart />
-                    </button>
+                    <ButtonHeart
+                      song={item}
+                      className="mx-[10px] rounded-full inline-flex justify-center items-center text-white w-[34px] h-[34px] text-[15px] border border-white hover:bg-primary hover:border-primary"
+                    />
                   </div>
                 </div>
               </li>

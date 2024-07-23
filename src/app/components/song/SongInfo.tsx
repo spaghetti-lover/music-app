@@ -5,6 +5,7 @@ import { ISongList } from "@/app/interfaces/song/ISongList";
 import { ButtonPlay } from "../button/ButtonPlay";
 import { getSingerList } from "@/app/helpers/getSinger";
 import { useEffect, useState } from "react";
+import { ButtonHeart } from "../button/ButtonHeart";
 export const SongInfo = ({ song }: { song: ISongList }) => {
   let [singerList, setSingerList] = useState<any>([]);
   useEffect(() => {
@@ -14,7 +15,7 @@ export const SongInfo = ({ song }: { song: ISongList }) => {
     };
 
     fetchApi();
-  });
+  }, []);
 
   return (
     <>
@@ -40,9 +41,7 @@ export const SongInfo = ({ song }: { song: ISongList }) => {
         </div>
         <div className="flex items-center">
           <div className="text-[14px] mr-[18px]">{song.listen}</div>
-          <div className="text-[20px]">
-            <FaHeart />
-          </div>
+          <ButtonHeart song={song} className="text-[20px]" />
         </div>
       </div>
     </>

@@ -7,4 +7,5 @@ export interface ISongList {
   image: string;
   audio?: string;
   link?: any;
+  wishlist?: any;
 }
