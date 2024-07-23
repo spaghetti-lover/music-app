@@ -15,6 +15,7 @@ export default function LoginPage() {
     } else {
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
+          console.log("Login success");
           router.push("/");
         })
         .catch((error) => {
@@ -35,8 +36,14 @@ export default function LoginPage() {
           label="Email"
           placeholder="Ví dụ: levana@gmail.com"
           name="email"
+          type="email"
         />
-        <Input label="Mật khẩu" placeholder="" name="password" />
+        <Input
+          label="Mật khẩu"
+          placeholder=""
+          name="password"
+          type="password"
+        />
         <button className="w-[500px] font-bold bg-primary rounded-[6px] py-[14px] pl-[16px]">
           Đăng nhập
         </button>

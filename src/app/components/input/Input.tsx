@@ -1,7 +1,7 @@
 import { IInput } from "@/app/interfaces/input/IInput";
 
 export const Input = (props: IInput) => {
-  const { label, placeholder, name } = props;
+  const { label, placeholder, name, type } = props;
 
   return (
     <>
@@ -11,6 +11,7 @@ export const Input = (props: IInput) => {
         </label>
         <input
           name={name}
+          type={type}
           placeholder={placeholder}
           className="w-[500px] text-black bg-[#FFFFFF] rounded-[6px] py-[14px] pl-[16px] outline-none"
         />
