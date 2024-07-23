@@ -15,7 +15,7 @@ export default function LoginPage() {
     } else {
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-          console.log("Login success");
+          alert("Login success");
           router.push("/");
         })
         .catch((error) => {
@@ -40,7 +40,7 @@ export default function LoginPage() {
         />
         <Input
           label="Mật khẩu"
-          placeholder=""
+          placeholder="Nhập ít nhất 6 ký tự"
           name="password"
           type="password"
         />

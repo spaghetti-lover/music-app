@@ -6,11 +6,11 @@ export default function LogOutPage() {
   const router = useRouter();
   signOut(auth)
     .then(() => {
-      console.log("Sign out success");
+      alert("Sign out success");
       router.push("/login");
     })
     .catch((error) => {
-      alert(error);
+      console.log(error);
     });
   return (
     <>

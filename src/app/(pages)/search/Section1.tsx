@@ -2,7 +2,7 @@
 import { SongList } from "@/app/components/song/SongList";
 import { getSongList } from "@/app/helpers/getSong";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 export default function Section1() {
   const searchParams = useSearchParams();
@@ -22,14 +22,15 @@ export default function Section1() {
   }, [keywordDefault]);
   return (
     <>
-      {/* render ra data */}
-      {data.length === 0 ? (
-        <div>
-          <h2>Không tìm thấy kết qua </h2>
-        </div>
-      ) : (
-        <SongList title={"Kết quả tìm kiếm"} songs={data} />
-      )}
+      <Suspense>
+        {data.length === 0 ? (
+          <div>
+            <h2>Không tìm thấy kết qua </h2>
+          </div>
+        ) : (
+          <SongList title={"Kết quả tìm kiếm"} songs={data} />
+        )}
+      </Suspense>
     </>
   );
 }

@@ -14,38 +14,31 @@ export const ButtonHeart = ({
   song: ISongList;
   className: string;
 }) => {
-  let [isLiked, setIsLiked] = useState(false);
   const id = song.id;
-  const userId: any = auth.currentUser?.uid;
-  const songRef = ref(db, `/songs/${id}`);
-  const handleButton = () => {
-    runTransaction(songRef, (song) => {
-      if (song) {
-        if (song.wishlist && song.wishlist[userId]) {
-          song.wishlist[userId] = null;
-        } else {
-          if (!song.wishlist) {
-            song.wishlist = [];
+
+  const handleAddWishlist = () => {
+    const userId = auth?.currentUser?.uid;
+
+    if (id && userId) {
+      const songRef = ref(db, `/songs/${id}`);
+      runTransaction(songRef, (song) => {
+        if (song) {
+          if (song.wishlist && song.wishlist[userId]) {
+            song.wishlist[userId] = null;
+          } else {
+            if (!song.wishlist) {
+              song.wishlist = {};
+            }
+            song.wishlist[userId] = true;
           }
-          song.wishlist[userId] = true;
         }
-      }
-      return song;
-    });
-  };
-  useEffect(() => {
-    if (song.wishlist && song.wishlist[userId]) {
-      setIsLiked(true);
+        return song;
+      });
     }
-  }, []);
+  };
   return (
     <>
-      <button
-        onClick={handleButton}
-        className={
-          `${className}` + (isLiked ? "text-primary border-primary" : "")
-        }
-      >
+      <button onClick={handleAddWishlist} className={className}>
         <FaHeart />
       </button>
     </>

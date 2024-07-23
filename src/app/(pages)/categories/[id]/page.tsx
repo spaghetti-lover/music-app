@@ -10,7 +10,11 @@ import { Section1 } from "@/app/(pages)/categories/[id]/Section1";
 
 export default function CategoryDetailPage() {
   const path = usePathname().slice(-1);
-  let [category, setCategory] = useState<Card>({});
+  let [category, setCategory] = useState<Card>({
+    title: "",
+    description: "",
+    image: "",
+  });
   useEffect(() => {
     const fetchApi = async () => {
       const data = await getCategoryDetail(path);

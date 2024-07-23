@@ -22,6 +22,7 @@ export default function RegisterPage() {
           set(ref(db, "users/" + user.uid), {
             fullName: username,
           }).then(() => {
+            alert("Đăng ký thành công");
             router.push("/login");
           });
         })
@@ -44,13 +45,20 @@ export default function RegisterPage() {
           label="Họ và tên"
           placeholder="Ví dụ: Lê Văn A"
           name="username"
+          type="text"
         />
         <Input
           label="Email"
           placeholder="Ví dụ: levana@gmail.com"
           name="email"
+          type="email"
         />
-        <Input label="Mật khẩu" placeholder="" name="password" />
+        <Input
+          label="Mật khẩu"
+          placeholder="Nhập ít nhất 6 ký tự"
+          name="password"
+          type="password"
+        />
         <button
           type="submit"
           className="w-[500px] font-bold bg-primary rounded-[6px] py-[14px] pl-[16px]"
