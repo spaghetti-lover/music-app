@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import { FaHeart, FaPlay } from "react-icons/fa";
 import { getSongList } from "@/app/helpers/getSong";
 import { useEffect, useState } from "react";
 import { ButtonPlay } from "../button/ButtonPlay";
